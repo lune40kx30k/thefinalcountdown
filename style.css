@@ -1,0 +1,19 @@
+    body, html {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color:  ;
+        height: 100%;
+    }
+    .center {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .middlelleft {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        margin-left: 30px;
+        width: 50%;
+    }

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,
+        initial-scale=1.0">
+    <title>The Final Countdown</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="center">
+    <div id="clock" style="color: #000000; font-size: 16vw;">12:12:00:46</div>
+</div>
+<script>
+setInterval(showTime, 1000);
+function showTime() {
+    const T0 = new Date(2026, 04, 28, 8, 0, 0);
+    let now = new Date();
+    let deltaT = Math.abs(T0 - now);
+    let deltaD = Math.floor(deltaT / (1000 * 60 * 60 * 24));
+    let deltaH = Math.floor(deltaT / (1000 * 60 * 60)-deltaD*24);
+    let deltaMin = Math.floor(deltaT / (1000 * 60)-deltaD*24*60-deltaH*60);
+    let deltaS = Math.floor(deltaT / (1000)-deltaD*24*60*60-deltaH*60*60-deltaMin*60);
+
+    deltaD = deltaD < 10 ? "0" + deltaD : deltaD;
+    deltaH = deltaH < 10 ? "0" + deltaH : deltaH;
+    deltaMin = deltaMin < 10 ? "0" + deltaMin : deltaMin;
+    deltaS = deltaS < 10 ? "0" + deltaS : deltaS;
+
+    let currentTime = deltaD+":"+deltaH+":"+deltaMin+":"+deltaS
+
+    document.getElementById("clock").innerHTML = currentTime;
+
+    let r = (deltaT > 973961124 ?  Math.floor(251-0.000000242*(deltaT-973961124)) : Math.floor(189+0.000000064*deltaT));
+    let g = (deltaT > 973961124 ?  Math.floor(255-0.000000032*(deltaT-973961124)) : Math.floor(0.000000262*deltaT));
+    let b = (deltaT > 973961124 ?  Math.floor(10-0.00000001*(deltaT-973961124)) : Math.floor(0.00000001*deltaT));
+    let color = "#"+(r).toString(16).padStart(2,'0')+(g).toString(16).padStart(2,'0')+(b).toString(16).padStart(2,'0');
+    document.body.style.backgroundColor = color;
+}
+
+showTime();
+</script>
+</body>
+</html>
+
